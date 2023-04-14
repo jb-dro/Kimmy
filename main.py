@@ -1,21 +1,18 @@
-# Simple PyQt5 text editor application
+import tkinter as tk
+import random
+import split_button
 
-import sys
-from PyQt5.QtWidgets import QApplication, QWidget
+random.seed(42)  # Set random seed for reproducibility
+score = 0  # Set initial score to 0
 
-class MainWindow(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("My Text Editor")
-        # get the screen geometry
-        screen = QApplication.desktop().screenGeometry()
-        # get the screen size
-        width, height = screen.width(), screen.height()
-        # set to full screen
-        self.setGeometry(0, 0, width, height)
+root = tk.Tk()
+root.title("Split Button App")
+root.attributes("-fullscreen", True)  # Set to full screen
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
-    app.exec_()
+root_button = split_button.SplitButton(root, "horizontal")
+
+# # add score box to the top right corner
+# score_box = tk.Label(root, text="Score: ", font=("Helvetica", 16))
+# score_box.pack(side=tk.TOP, anchor=tk.NE)
+
+root.mainloop()
