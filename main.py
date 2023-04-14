@@ -1,9 +1,13 @@
 import tkinter as tk
-import random
+import random, os
 import split_button
 
 random.seed(42)  # Set random seed for reproducibility
 score = 0  # Set initial score to 0
+
+if os.environ.get('DISPLAY','') == '':
+    print('no display found. Using :0.0')
+    os.environ.__setitem__('DISPLAY', ':0.0')
 
 root = tk.Tk()
 root.title("Split Button App")
